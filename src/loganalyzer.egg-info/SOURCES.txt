@@ -1,0 +1,7 @@
+README.md
+pyproject.toml
+src/loganalyzer.egg-info/PKG-INFO
+src/loganalyzer.egg-info/SOURCES.txt
+src/loganalyzer.egg-info/dependency_links.txt
+src/loganalyzer.egg-info/requires.txt
+src/loganalyzer.egg-info/top_level.txt

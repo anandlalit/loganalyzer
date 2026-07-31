@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "loganalyzer"
+version = "0.1.0"
+description = "A log analysis tool"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [
+    {name = "Lalit", email = "anand.lalit@gmail.com"}
+]
+keywords = ["log", "analysis", "parser"]
+
+dependencies = [
+    "pandas>=2.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/loganalyzer"
+Repository = "https://github.com/yourusername/loganalyzer"
+Issues = "https://github.com/yourusername/loganalyzer/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]

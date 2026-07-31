@@ -1,0 +1,33 @@
+Metadata-Version: 2.4
+Name: loganalyzer
+Version: 0.1.0
+Summary: A log analysis tool
+Author-email: Lalit <anand.lalit@gmail.com>
+License-Expression: MIT
+Project-URL: Homepage, https://github.com/yourusername/loganalyzer
+Project-URL: Repository, https://github.com/yourusername/loganalyzer
+Project-URL: Issues, https://github.com/yourusername/loganalyzer/issues
+Keywords: log,analysis,parser
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: pandas>=2.0.0
+
+# LogAnalyzer
+
+A log analysis tool.
+
+## Installation
+
+```bash
+pip install loganalyzer
+```
+
+## Usage
+
+```python
+import loganalyzer
+```
+
+## License
+
+MIT
