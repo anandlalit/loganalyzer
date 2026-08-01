@@ -33,13 +33,3 @@ pip install dist/loganalyzer-0.1.0-py3-none-any.whl
 # install project in edit mode
 pip install -e .
 ```
-
-## Usage
-
-```python
-import loganalyzer
-```
-
-## License
-
-MIT
