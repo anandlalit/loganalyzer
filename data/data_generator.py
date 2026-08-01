@@ -1,10 +1,17 @@
 from pathlib import Path
 import logging
-
+import random
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
-SEED_LOG_LINE: str = '127.0.0.1 - - [30/Jul/2026:14:22:01] "GET /api/users HTTP/1.1" 200 512\n'
+SEED_IP = '127.0.0.1'
+SEED_HTTP_METHOD = 'GET'
+SEED_HTTP_ENDPOINT_PATH = '/api/users'
+SEED_HTTP_RESPONSE_CODE = '200'
+
+CHOICE_SELECTOR = ['ip', 'http_method', 'http_endpoint', 'http_response_code']
+
+SEED_LOG_LINE: str = f"{{SEED_IP}} [30/Jul/2026:14:22:01] {{SEED_HTTP_METHOD}} {{SEED_HTTP_ENDPOINT_PATH}} HTTP/1.1 {{SEED_HTTP_RESPONSE_CODE}}\n"
 
 def generate_data_file(file_name: str = "log_data_for_analysis.log", num_lines: int = 1, clean_before_writing: bool = True) -> None:
     """
@@ -26,8 +33,27 @@ def generate_data_file(file_name: str = "log_data_for_analysis.log", num_lines: 
     with open(data_file, 'a') as log_data:
         log.info(f"Starting to write data to the data file {data_file.resolve()}")
         for counter in range(num_lines):
-            log_data.write(SEED_LOG_LINE)
+            log_data.write(introduce_noise(random.choice(CHOICE_SELECTOR)))
         log.info(f"Data file creation is complete with lines added {counter}")
+
+
+def introduce_noise(choice: str) -> str:
+    """
+    This function will introduce noise to the data generation file.
+    Args:
+        choice: The name of variability to introduce
+    """
+    choices: dict = {
+    CHOICE_SELECTOR[0]: random.choice([SEED_IP,'0.0.0.1', '197.24.24.234','145.23.27.99']), # ip choices
+    CHOICE_SELECTOR[1]: random.choice([SEED_HTTP_METHOD,'POST','PUT', 'DELETE']), # http method choice
+    CHOICE_SELECTOR[2]: random.choice([SEED_HTTP_ENDPOINT_PATH, '/api/orders', '/api/products', '/api/cartinfo']), # http endpoint choices
+    CHOICE_SELECTOR[3]: random.choice([SEED_HTTP_RESPONSE_CODE, '401', '403', '500']), # http response code choices        
+    }
+
+    return SEED_LOG_LINE.format(SEED_IP = choices[CHOICE_SELECTOR[0]],
+    SEED_HTTP_METHOD = choices[CHOICE_SELECTOR[1]],
+    SEED_HTTP_ENDPOINT_PATH = choices[CHOICE_SELECTOR[2]],
+    SEED_HTTP_RESPONSE_CODE = choices[CHOICE_SELECTOR[3]])
 
 if __name__ == '__main__':
     generate_data_file(num_lines = 10000, clean_before_writing = True)

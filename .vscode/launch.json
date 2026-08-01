@@ -9,6 +9,24 @@
             "console": "integratedTerminal",
             "justMyCode": false,
             "python": "${workspaceFolder}/.venv/bin/python"
+        },
+        {
+            "name": "Python: logdata.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/loganalyzer/model/logdata.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "python": "${workspaceFolder}/.venv/bin/python"
+        },
+        {
+            "name": "Python: runner.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/loganalyzer/runner.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "python": "${workspaceFolder}/.venv/bin/python"
         }
     ]
 }
